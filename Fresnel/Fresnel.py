@@ -20,3 +20,6 @@ plt.rcParams['xtick.major.size'] = 7.5
 plt.rcParams['xtick.minor.size'] = 3
 plt.rcParams['ytick.major.size'] = 7.5
 plt.rcParams['ytick.minor.size'] = 3
+
+
+print("john dillermand")
