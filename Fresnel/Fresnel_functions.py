@@ -4,9 +4,6 @@ import os
 from scipy.optimize import curve_fit
 from scipy.stats import chi2
 
-def test(tal):
-    print(np.sin(tal))
-
 def get_average(file):
     data = np.loadtxt(file,skiprows=2,usecols=1,delimiter=',')
     mean = np.mean(data)
