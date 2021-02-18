@@ -21,5 +21,30 @@ plt.rcParams['xtick.minor.size'] = 3
 plt.rcParams['ytick.major.size'] = 7.5
 plt.rcParams['ytick.minor.size'] = 3
 
+''' SETUP '''
+# Backgounds
+p_back = get_average('data/Day2/p_background.csv')
+s_back = get_average('data/Day2/s_background.csv')
 
-print("john dillermand")
+# Intensities
+Ip = get_average('data/Day2/int_p.csv')
+Is = get_average('data/Day2/int_s.csv')
+
+# Angles
+phi_Ts = load_angles('data/Day2/p_angles.txt')
+phi_Rs = phi_Ts[:,5:]
+phi_Tp = load_angles('data/Day2/s_angles.txt')
+phi_Rp = phi_Tp[:,3:]
+
+# Da real intenities
+Tp = load_intensities('Tp', phi_Tp[2,:], Ip, p_back)
+Ts = load_intensities('Ts', phi_Ts[2,:], Is, s_back)
+Rp = load_intensities('Rp', phi_Rp[2,:], Ip, p_back)
+Rs = load_intensities('Rs', phi_Rs[2,:], Is, s_back)
+
+''' Lad os se hvor flækket vores data er! '''
+# Find n
+find_n(phi_Ts[0], phi_Ts[1], to_plot=True)
+
+# Intensitetsplot. Ikke pænt endnu, det gør jeg senere!
+plot_intensities()
