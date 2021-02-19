@@ -45,13 +45,17 @@ def load_intensities(file_type,angles,int0,background): #OBS! Angles must be deg
     mean_list = []
     error_list = []
     mean_background, error_background = background
+    mean_int, error_int = int0
+    mean_int = mean_int - background #Korriger for baggrund
+    error_int = np.sqrt(error_int**2+error_background**2) #Error prop på usikkerheden
+
     for angle in angles:
         file = 'data/Day2/' + file_type + f'{int(angle)}.csv'
         mean,error = get_average(file)
         mean = mean - background #Subtracts background
         error = np.sqrt(error**2+error_background**2) #Error prop with background
-        rel_mean = mean/int0[0]
-        error_prop = rel_mean * np.sqrt((error/mean)**2+(int0[1]/int0[0])**2)
+        rel_mean = mean/mean_int
+        error_prop = rel_mean * np.sqrt((error/mean)**2+(error_int/mean_int)**2)
         mean_list.append(rel_mean)
         error_list.append(error_prop)
     return np.array([mean_list,error_list])

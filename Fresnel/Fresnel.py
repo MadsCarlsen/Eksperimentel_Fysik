@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 from scipy.optimize import curve_fit
 from scipy.stats import chi2
 from Fresnel_functions import *
